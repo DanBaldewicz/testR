@@ -44,6 +44,8 @@ SortedEIASample = np.vstack((SampEIAColdVCold,SampEIAHotHumid,SampEIAMixedHumid,
 
 #Create long format output
 
+np.append(SampEIAColdVCold,[SampEIAHotHumid,SampEIAMixedHumid,SampEIAHDMD,SampEIAMarine])
+
 #Save Sample items to file
 np.savetxt('PRNG.csv',SortedEIASample, delimiter=",")
 
