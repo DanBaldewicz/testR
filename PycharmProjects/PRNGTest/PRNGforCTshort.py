@@ -1,10 +1,12 @@
 import numpy as np
 import pickle
-
+from natsort import natsorted
 
 #Example with climate zones, all have equal items
 np.random.seed(5)
 
+#Apply natural sort
+#natsorted()
 
 #state caching
 prng_state_exact = np.random.get_state()
@@ -39,17 +41,13 @@ SampEIAMixedHumid = np.sort(SampEIAMixedHumid)
 SampEIAHDMD = np.sort(SampEIAHDMD)
 SampEIAMarine = np.sort(SampEIAMarine)
 
-#Create matrix for all samples
+#Create matrix for all samples, Matrix format best for indicies
 SortedEIASample = np.vstack((SampEIAColdVCold,SampEIAHotHumid,SampEIAMixedHumid,SampEIAHDMD,SampEIAMarine))
 
-#Create long format output
-
+#Create long format output, best for vector of thermostat id's
 results = SampEIAColdVCold
-
-np.append(results,[SampEIAHotHumid,SampEIAMixedHumid,SampEIAHDMD,SampEIAMarine])
+outfile = np.append(results,[SampEIAHotHumid,SampEIAMixedHumid,SampEIAHDMD,SampEIAMarine])
 
 #Save Sample items to file
 np.savetxt('PRNG.csv',SortedEIASample, delimiter=",")
-np.savetxt('PRNGvector.csv',results, delimiter=",")
-
-
+np.savetxt('PRNGvector.csv',outfile, delimiter=",")
