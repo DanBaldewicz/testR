@@ -1,9 +1,7 @@
 import numpy as np
 import pickle
+#Package Notes, Natsort 5.0.1
 from natsort import natsorted
-
-#Example with climate zones, all have equal items
-np.random.seed(5)
 
 #Apply natural sort
 #natsorted()
@@ -27,11 +25,23 @@ EIAMixedHumid = np.arange(500)
 EIAHDMD = np.arange(500)
 EIAMarine = np.arange(500)
 
-#Sample target data
+#Natural Sort Imported data by value
+SampEIAColdVCold = natsorted(SampEIAColdVCold)
+SampEIAHotHumid = natsorted(SampEIAHotHumid)
+SampEIAMixedHumid = natsorted(SampEIAMixedHumid)
+SampEIAHDMD = natsorted(SampEIAHDMD)
+SampEIAMarine = natsorted(SampEIAMarine)
+
+#Sample target data, applying 1 seed per climate zone
+np.random.seed(101)
 SampEIAColdVCold = np.random.choice(EIAColdVCold,200, replace=False )
+np.random.seed(102)
 SampEIAHotHumid = np.random.choice(EIAHotHumid,200, replace=False )
+np.random.seed(103)
 SampEIAMixedHumid = np.random.choice(EIAMixedHumid,200, replace=False )
+np.random.seed(104)
 SampEIAHDMD = np.random.choice(EIAHDMD,200, replace=False )
+np.random.seed(105)
 SampEIAMarine = np.random.choice(EIAMarine,200, replace=False )
 
 #Sort Sampled data by value
