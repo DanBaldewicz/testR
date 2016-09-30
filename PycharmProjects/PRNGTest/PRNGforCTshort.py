@@ -3,17 +3,14 @@ import pickle
 #Package Notes, Natsort 5.0.1
 from natsort import natsorted
 
-#Apply natural sort
-#natsorted()
-
-#state caching
+#DEBUG: state caching
 prng_state_exact = np.random.get_state()
 
-#Save state via pickle
+#DEBUG: Save state via pickle
 with open('prng_state.pickle','wb') as f:
     pickle.dump(prng_state_exact,f)
 
-# #Code to load old state and set PRNG to that state
+# #DEBUG: Code to load old state and set PRNG to that state
 # with open('prng_state.pickle','rb') as f:
 #     reload_state = pickle.load(f)
 # np.random.set_state(reload_state)
